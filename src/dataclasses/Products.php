@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../db.php';
+require_once __DIR__ . '/Categories.php';
 
 class Products
 {
@@ -11,6 +12,7 @@ class Products
     public bool $is_active;
     public string $created_at;
     public int $created_by;
+    public ?Categories $category = null;
 
     public function __construct(
         int $id,
@@ -34,7 +36,7 @@ class Products
 
     public static function fromResultRow(array $row): Products
     {
-        return new Products(
+        $product = new Products(
             (int)$row['id'],
             (string)$row['name'],
             $row['description'] !== null ? (string)$row['description'] : null,
@@ -44,13 +46,25 @@ class Products
             (string)$row['created_at'],
             (int)$row['created_by']
         );
+
+        if (isset($row['category_name'])) {
+            $product->category = Categories::fromResultRow([
+                'category_id' => $row['category_id'],
+                'category_name' => $row['category_name'],
+                'category_slug' => $row['category_slug'],
+                'category_created_at' => $row['category_created_at'],
+            ]);
+        }
+
+        return $product;
     }
 
     public static function getAllProducts(mysqli $db, ?string $categoryName = null): array
     {
         if ($categoryName) {
             $stmt = $db->prepare(
-                'SELECT p.id, p.name, p.description, p.price, p.category_id, p.is_active, p.created_at, p.created_by
+                'SELECT p.id, p.name, p.description, p.price, p.category_id, p.is_active, p.created_at, p.created_by,
+                        c.name AS category_name, c.slug AS category_slug, c.created_at AS category_created_at
                  FROM products p
                  JOIN categories c ON c.id = p.category_id
                  WHERE c.name = ?
@@ -62,8 +76,10 @@ class Products
             $stmt->close();
         } else {
             $result = $db->query(
-                'SELECT p.id, p.name, p.description, p.price, p.category_id, p.is_active, p.created_at, p.created_by
+                'SELECT p.id, p.name, p.description, p.price, p.category_id, p.is_active, p.created_at, p.created_by,
+                        c.name AS category_name, c.slug AS category_slug, c.created_at AS category_created_at
                  FROM products p
+                 JOIN categories c ON c.id = p.category_id
                  ORDER BY p.name'
             )->fetch_all(MYSQLI_ASSOC);
         }
