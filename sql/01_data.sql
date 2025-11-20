@@ -1,5 +1,5 @@
-INSERT INTO users (email, password_hash, role) VALUES
-('beheer@groenehavenmarkt.nl', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEaRrULq04qex6a1Jk5gB2C/JP96', 'admin');
+INSERT INTO users (email, password, role) VALUES
+('beheer@groenehavenmarkt.nl', 'admin123', 'admin');
 
 INSERT INTO categories (name, slug) VALUES
 ('Groente', 'groente'),

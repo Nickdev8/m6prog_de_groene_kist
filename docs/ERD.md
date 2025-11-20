@@ -5,7 +5,7 @@ erDiagram
     USERS {
         int id PK
         varchar email "unique"
-        varchar password_hash
+        varchar password
         varchar role "admin|editor"
         datetime created_at
     }
