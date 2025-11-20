@@ -22,7 +22,7 @@ function database_connect(): mysqli
 function productsByCategory(mysqli $db, string $categoryName): array
 {
     $stmt = $db->prepare(
-        'SELECT p.id, p.name, p.description, p.price, c.name AS category
+        'SELECT p.id, p.name, p.description, p.price, p.category_id, p.is_active, p.created_at, p.created_by
          FROM products p
          JOIN categories c ON c.id = p.category_id
          WHERE c.name = ?
