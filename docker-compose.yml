@@ -32,6 +32,7 @@ services:
       - "3306:3306"
     volumes:
       - m6prog_de_groene_kist_db_data:/var/lib/mysql
+      - ./sql:/docker-entrypoint-initdb.d:ro
     restart: unless-stopped
 
   m6prog_de_groene_kist_phpmyadmin:
