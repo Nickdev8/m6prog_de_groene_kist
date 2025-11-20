@@ -1,0 +1,14 @@
+-- Extra testdata voor producten en aanbiedingen
+INSERT INTO products (name, description, price, category_id, created_by) VALUES
+('Kropsla', 'Knapperige blaadjes voor salades.', 1.15, 1, 1),
+('Roma tomaten', 'Stevig, geschikt voor pastasauzen.', 2.40, 1, 1),
+('Komkommer', 'Frisse snack- en saladekomkommer.', 1.00, 1, 1),
+('Pink Lady appels', 'Zoet en stevig handfruit.', 3.10, 2, 1),
+('Conference peren', 'Sappige peren met zachte bite.', 2.20, 2, 1),
+('Kiwi gold', 'Goudgele kiwi met zoete smaak.', 3.90, 2, 1);
+
+INSERT INTO offers (product_id, title, promo_price, starts_at, ends_at, active, created_by) VALUES
+(5, 'Kropsla twee halen één betalen', 0.99, '2025-12-01 00:00:00', '2025-12-15 23:59:59', 1, 1),
+(6, 'Roma tomaten voordeelzak', 1.99, '2025-12-02 00:00:00', '2025-12-20 23:59:59', 1, 1),
+(8, 'Pink Lady doosje', 2.50, '2025-12-03 00:00:00', '2025-12-18 23:59:59', 1, 1),
+(9, 'Conference peren kilo actie', 1.79, '2025-12-04 00:00:00', '2025-12-22 23:59:59', 1, 1);
