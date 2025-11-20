@@ -1,4 +1,3 @@
--- Extra testdata voor producten en aanbiedingen
 INSERT INTO products (name, description, price, category_id, created_by) VALUES
 ('Kropsla', 'Knapperige blaadjes voor salades.', 1.15, 1, 1),
 ('Roma tomaten', 'Stevig, geschikt voor pastasauzen.', 2.40, 1, 1),
