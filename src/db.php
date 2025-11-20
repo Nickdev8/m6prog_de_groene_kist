@@ -1,6 +1,6 @@
 <?php
 
-function getDb(): mysqli
+function database_connect(): mysqli
 {
     static $db = null;
     if ($db instanceof mysqli) {

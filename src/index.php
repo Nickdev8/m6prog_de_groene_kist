@@ -14,8 +14,7 @@ if (!array_key_exists($requestPath, $routes)) {
     exit;
 }
 
-require __DIR__ . '/db.php';
-$db = getDb();
+require __DIR__ . '/dataclasses/groenekistdb.php';
 
 $pageFile = $routes[$requestPath];
 
