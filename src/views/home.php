@@ -7,8 +7,8 @@
             Stap binnen voor knapperige groenten, sappig fruit en kleurrijke bosjes kruiden.
         </p>
         <div class="hero-actions">
-            <a class="btn primary" href="?page=products">Bekijk producten</a>
-            <a class="btn ghost" href="?page=contact">Plan je bezoek</a>
+            <a class="btn primary" href="/fruit">Bekijk producten</a>
+            <a class="btn ghost" href="/contact">Plan je bezoek</a>
         </div>
         <div class="location-chip">Route: Havenplein 12, Haarlem • 5 min van station</div>
     </div>
