@@ -1,6 +1,3 @@
-<?php
-$current = $_GET['page'] ?? 'home';
-?>
 <header class="navigation">
     <div class="nav-brand">
         <div class="logo-circle">GH</div>
@@ -11,9 +8,10 @@ $current = $_GET['page'] ?? 'home';
     </div>
     <nav>
         <ul>
-            <li><a class="<?= $current === 'home' ? 'active' : '' ?>" href="?page=home">Home</a></li>
-            <li><a class="<?= $current === 'products' ? 'active' : '' ?>" href="?page=products">Producten</a></li>
-            <li><a class="<?= $current === 'contact' ? 'active' : '' ?>" href="?page=contact">Contact</a></li>
+            <li><a class="<?= trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/') === '' || trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/') === 'home' ? 'active' : '' ?>" href="/home">Home</a></li>
+            <li><a class="<?= trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/') === 'groente' ? 'active' : '' ?>" href="/groente">Groente</a></li>
+            <li><a class="<?= trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/') === 'fruit' ? 'active' : '' ?>" href="/fruit">Fruit</a></li>
+            <li><a class="<?= trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/') === 'contact' ? 'active' : '' ?>" href="/contact">Contact</a></li>
         </ul>
     </nav>
 </header>

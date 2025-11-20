@@ -15,7 +15,8 @@ services:
 
   m6prog_de_groene_kist_php:
     container_name: m6prog_de_groene_kist_php
-    image: php:8.2-fpm
+    build:
+      context: ./php
     volumes:
       - ./src:/var/www/html
     restart: unless-stopped

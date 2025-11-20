@@ -1,13 +1,23 @@
 <?php
-$page = $_GET['page'] ?? 'home';
-
+$requestPath = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) ?? '', '/');
 $routes = [
+    '' => 'views/home.php',
     'home' => 'views/home.php',
-    'products' => 'views/products.php',
+    'groente' => 'views/groente.php',
+    'fruit' => 'views/fruit.php',
     'contact' => 'views/contact.php',
 ];
 
-$pageFile = $routes[$page] ?? $routes['home'];
+if (!array_key_exists($requestPath, $routes)) {
+    http_response_code(404);
+    echo 'Pagina niet gevonden.';
+    exit;
+}
+
+require __DIR__ . '/db.php';
+$pdo = getPdo();
+
+$pageFile = $routes[$requestPath];
 
 ?><!DOCTYPE html>
 <html lang="nl">
