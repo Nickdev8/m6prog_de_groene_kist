@@ -14,25 +14,16 @@ if (!array_key_exists($requestPath, $routes)) {
     exit;
 }
 
-require __DIR__ . '/dataclasses/groenekistdb.php';
-
 $pageFile = $routes[$requestPath];
 
-?><!DOCTYPE html>
-<html lang="nl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Groene Haven Markt</title>
-    <link rel="stylesheet" href="assets/styles.css">
-</head>
-<body>
-    <?php require __DIR__ . '/includes/navbar.php'; ?>
+require __DIR__ . '/includes/header.php';
+require __DIR__ . '/includes/navbar.php';
+?>
 
-    <main class="page">
-        <?php require __DIR__ . '/' . $pageFile; ?>
-    </main>
+<main class="page">
+    <?php require __DIR__ . '/' . $pageFile; ?>
+</main>
 
-    <?php require __DIR__ . '/includes/footer.php'; ?>
+<?php require __DIR__ . '/includes/footer.php'; ?>
 </body>
 </html>
