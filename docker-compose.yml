@@ -1,0 +1,51 @@
+version: "3.9"
+
+services:
+  m6prog_de_groene_kist_nginx:
+    container_name: m6prog_de_groene_kist_nginx
+    image: nginx:1.27-alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ./src:/var/www/html:ro
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - m6prog_de_groene_kist_php
+    restart: unless-stopped
+
+  m6prog_de_groene_kist_php:
+    container_name: m6prog_de_groene_kist_php
+    image: php:8.2-fpm
+    volumes:
+      - ./src:/var/www/html
+    restart: unless-stopped
+
+  m6prog_de_groene_kist_db:
+    container_name: m6prog_de_groene_kist_db
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: m6prog_de_groene_kist_root_pw
+      MYSQL_DATABASE: m6prog_de_groene_kist
+      MYSQL_USER: m6prog_de_groene_kist_app
+      MYSQL_PASSWORD: m6prog_de_groene_kist_app_pw
+    ports:
+      - "3306:3306"
+    volumes:
+      - m6prog_de_groene_kist_db_data:/var/lib/mysql
+    restart: unless-stopped
+
+  m6prog_de_groene_kist_phpmyadmin:
+    container_name: m6prog_de_groene_kist_phpmyadmin
+    image: phpmyadmin:5.2-apache
+    environment:
+      PMA_HOST: m6prog_de_groene_kist_db
+      PMA_USER: root
+      PMA_PASSWORD: m6prog_de_groene_kist_root_pw
+    ports:
+      - "8081:80"
+    depends_on:
+      - m6prog_de_groene_kist_db
+    restart: unless-stopped
+
+volumes:
+  m6prog_de_groene_kist_db_data:
