@@ -1,5 +1,5 @@
 <?php
-$fruit = productsByCategory($pdo, 'Fruit');
+$fruit = productsByCategory($db, 'Fruit');
 ?>
 <section class="page-header">
     <p class="kicker">Assortiment</p>

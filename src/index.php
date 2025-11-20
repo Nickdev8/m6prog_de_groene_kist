@@ -15,7 +15,7 @@ if (!array_key_exists($requestPath, $routes)) {
 }
 
 require __DIR__ . '/db.php';
-$pdo = getPdo();
+$db = getDb();
 
 $pageFile = $routes[$requestPath];
 
