@@ -1,18 +1,5 @@
 <?php
-$groenteRows = productsByCategory($db, 'Groente');
-$groente = [];
-foreach ($groenteRows as $row) {
-    $groente[] = new Products(
-        (int)$row['id'],
-        (string)$row['name'],
-        $row['description'] !== null ? (string)$row['description'] : null,
-        (float)$row['price'],
-        (int)$row['category_id'],
-        (bool)$row['is_active'],
-        (string)$row['created_at'],
-        (int)$row['created_by']
-    );
-}
+$groente = Products::getAllProducts($db, 'Groente');
 ?>
 <section class="page-header">
     <p class="kicker">Assortiment</p>

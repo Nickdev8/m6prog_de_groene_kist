@@ -1,18 +1,5 @@
 <?php
-$fruitRows = productsByCategory($db, 'Fruit');
-$fruit = [];
-foreach ($fruitRows as $row) {
-    $fruit[] = new Products(
-        (int)$row['id'],
-        (string)$row['name'],
-        $row['description'] !== null ? (string)$row['description'] : null,
-        (float)$row['price'],
-        (int)$row['category_id'],
-        (bool)$row['is_active'],
-        (string)$row['created_at'],
-        (int)$row['created_by']
-    );
-}
+$fruit = Products::getAllProducts($db, 'Fruit');
 ?>
 <section class="page-header">
     <p class="kicker">Assortiment</p>
