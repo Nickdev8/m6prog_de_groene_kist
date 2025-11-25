@@ -33,6 +33,7 @@ services:
       - "3307:3306"
     volumes:
       - m6prog_digipost_db_data:/var/lib/mysql
+      - ./sql:/docker-entrypoint-initdb.d:ro
     restart: unless-stopped
 
 volumes:
