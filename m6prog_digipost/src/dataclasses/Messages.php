@@ -53,4 +53,15 @@ class Messages
         $stmt->close();
         return $row ? self::fromRow($row) : null;
     }
+
+    public static function getMessagesByRecipientId(mysqli $db, int $recipientId): array
+    {
+        $stmt = $db->prepare('SELECT id, recipient_id, subject, body, created_at, read_at FROM messages WHERE recipient_id = ? ORDER BY id');
+        $stmt->bind_param('i', $recipientId);
+        $stmt->execute();
+        $rows = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        $stmt->close();
+
+        return array_map([self::class, 'fromRow'], $rows);
+    }
 }

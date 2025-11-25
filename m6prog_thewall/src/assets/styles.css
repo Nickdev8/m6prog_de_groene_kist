@@ -1,0 +1,118 @@
+.page {
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    background: radial-gradient(circle at 20% 20%, #f1f5f9, #e2e8f0);
+    min-height: 100vh;
+    margin: 0;
+    color: #0f172a;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 24px 64px;
+}
+
+h1 {
+    margin: 0 0 8px;
+    font-size: 2.4rem;
+    letter-spacing: -0.02em;
+}
+
+.lead {
+    margin: 0 0 24px;
+    color: #334155;
+}
+
+.status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 12px;
+    background: #ecfeff;
+    color: #0ea5e9;
+    font-weight: 600;
+    margin-bottom: 24px;
+}
+
+.wall {
+    display: grid;
+    gap: 16px;
+}
+
+.wall-card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 16px 18px;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+}
+
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 0.9rem;
+    color: #475569;
+    margin-bottom: 8px;
+}
+
+.author {
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.body {
+    margin: 0;
+    line-height: 1.5;
+}
+
+.form-card {
+    margin-top: 32px;
+    padding: 18px;
+    border-radius: 12px;
+    border: 1px dashed #cbd5e1;
+    background: #f8fafc;
+}
+
+form {
+    display: grid;
+    gap: 12px;
+}
+
+label {
+    font-weight: 600;
+    color: #0f172a;
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    background: #fff;
+    font-size: 1rem;
+    color: #0f172a;
+}
+
+textarea {
+    min-height: 96px;
+    resize: vertical;
+}
+
+button {
+    justify-self: start;
+    padding: 10px 18px;
+    border-radius: 10px;
+    border: none;
+    background: linear-gradient(135deg, #22d3ee, #0ea5e9);
+    color: #0b1224;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(14, 165, 233, 0.35);
+}
+
+button:hover {
+    filter: brightness(0.95);
+}

@@ -1,0 +1,40 @@
+version: "3.9"
+
+services:
+  m6prog_thewall_nginx:
+    container_name: m6prog_thewall_nginx
+    image: nginx:1.27-alpine
+    ports:
+      - "8086:80"
+    volumes:
+      - ./src:/var/www/html:ro
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - m6prog_thewall_php
+    restart: unless-stopped
+
+  m6prog_thewall_php:
+    container_name: m6prog_thewall_php
+    build:
+      context: ./php
+    volumes:
+      - ./src:/var/www/html
+    restart: unless-stopped
+
+  m6prog_thewall_db:
+    container_name: m6prog_thewall_db
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: thewall_root_pw
+      MYSQL_DATABASE: m6prog_thewall
+      MYSQL_USER: thewall_app
+      MYSQL_PASSWORD: thewall_app_pw
+    ports:
+      - "3317:3306"
+    volumes:
+      - m6prog_thewall_db_data:/var/lib/mysql
+      - ./sql:/docker-entrypoint-initdb.d:ro
+    restart: unless-stopped
+
+volumes:
+  m6prog_thewall_db_data:
