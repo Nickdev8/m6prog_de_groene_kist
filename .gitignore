@@ -1,3 +1,5 @@
 m6prog_de_groene_kist/docs/ERD.md
 m6prog_digipost/docs/ERD.md
 m6prog_login/docs/ERD.md
+.env
+m6prog_login/.env
